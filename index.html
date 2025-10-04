@@ -1,0 +1,210 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://accounts.google.com/gsi/client" async defer></script>
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="login-style.css">
+  <title>Rioce Computer studies • Secure</title>
+  <style>
+    
+	</style>
+</head>
+<body>
+  	<img src="Rioce-image.png" alt="Rioce Logo" class="logo"/>
+    <main class="wrap">
+    <section class="card">
+      <h2>Rioce Computer</h2>
+      <h1>Secure Auth</h1>
+      <!-- Tabs -->
+      <div class="tabs">
+        <button id="tab-login" class="tab active">Login</button>
+        <button id="tab-signup" class="tab">Sign Up</button>
+        <button id="tab-forgot" class="tab">Forgot</button>
+      </div>
+
+      <!-- Panels -->
+      <div id="panel-login" class="panel active">
+        <label class="field">
+          <span>Email</span>
+          <input id="login-email" type="email" required />
+          <small id="login-email-err" class="error"></small>
+        </label>
+        <label class="field">
+          <span>Password</span>
+          <input id="login-pass" type="password" required />
+          <small id="login-pass-err" class="error"></small>
+        </label>
+        <label><input id="login-remember" type="checkbox" /> Remember me</label>
+        <button id="login-submit" class="btn">Sign in</button>
+      </div>
+
+      <div id="panel-signup" class="panel">
+        <label class="field">
+          <span>Full name</span>
+          <input id="signup-name" type="text" required />
+          <small id="signup-name-err" class="error"></small>
+        </label>
+        <label class="field">
+          <span>Email</span>
+          <input id="signup-email" type="email" required />
+          <small id="signup-email-err" class="error"></small>
+        </label>
+        <label class="field">
+          <span>Password</span>
+          <input id="signup-pass" type="password" required />
+          <small id="signup-pass-err" class="error"></small>
+        </label>
+        <label class="field">
+          <span>Confirm Password</span>
+          <input id="signup-confirm" type="password" required />
+          <small id="signup-confirm-err" class="error"></small>
+        </label>
+        <label><input id="signup-terms" type="checkbox" /> Accept Terms</label>
+        <small id="signup-terms-err" class="error"></small>
+        <button id="signup-submit" class="btn">Create Account</button>
+      </div>
+
+      <div id="panel-forgot" class="panel">
+        <label class="field">
+          <span>Email</span>
+          <input id="forgot-email" type="email" required />
+          <small id="forgot-email-err" class="error"></small>
+        </label>
+        <button id="forgot-submit" class="btn">Send reset link</button>
+      </div>
+
+      <!-- Google -->
+      <div id="g_id_onload"
+       data-client_id="365187084872-ue28gbnv1fam5n9g0g5ausg9ct12c5fo.apps.googleusercontent.com"
+       data-callback="handleCredentialResponse"></div>
+      <div class="g_id_signin" data-type="standard"></div>
+
+    </section>
+  </main>
+  
+
+  <div id="toast"></div>
+<script>
+  // --- Toast Helper (only one function) ---
+  function toast(msg){ 
+    const t=document.getElementById('toast'); 
+    t.textContent=msg; 
+    t.className='toast'; 
+    setTimeout(()=>t.textContent='',3000); 
+  }
+
+  // --- Google Login Handler ---
+  function handleCredentialResponse(res) {
+    fetch('/verify-token', {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({ id_token: res.credential })
+    })
+    .then(r => r.json())
+    .then(d => {
+      if (d && d.email) {
+        let users = JSON.parse(localStorage.getItem("users")||"[]");
+        let existing = users.find(u=>u.email===d.email);
+        if (!existing) {
+          let user = { name: d.name || "Google User", email: d.email, pass: "google_oauth" };
+          users.push(user);
+          localStorage.setItem("users", JSON.stringify(users));
+        }
+        localStorage.setItem("currentUser", JSON.stringify(d));
+        toast("Google login success! Redirecting...");
+        setTimeout(()=>window.location="dashboard-User.html",1000);
+      } else {
+        toast("Google login failed!");
+      }
+    });
+  }
+
+document.addEventListener('DOMContentLoaded', () => {
+  const tabs = {
+    login: document.getElementById('tab-login'),
+    signup: document.getElementById('tab-signup'),
+    forgot: document.getElementById('tab-forgot')
+  };
+  const panels = {
+    login: document.getElementById('panel-login'),
+    signup: document.getElementById('panel-signup'),
+    forgot: document.getElementById('panel-forgot')
+  };
+
+  function switchTo(name){
+    Object.values(tabs).forEach(b=>b.classList.remove('active'));
+    Object.values(panels).forEach(p=>p.classList.remove('active'));
+    tabs[name].classList.add('active');
+    panels[name].classList.add('active');
+  }
+  tabs.login.onclick=()=>switchTo('login');
+  tabs.signup.onclick=()=>switchTo('signup');
+  tabs.forgot.onclick=()=>switchTo('forgot');
+
+  // Storage helpers
+  function saveUser(user){
+    let users = JSON.parse(localStorage.getItem("users")||"[]");
+    users.push(user);
+    localStorage.setItem("users", JSON.stringify(users));
+  }
+  function findUser(email){
+    let users = JSON.parse(localStorage.getItem("users")||"[]");
+    return users.find(u=>u.email===email);
+  }
+
+  // --- User Signup ---
+  document.getElementById('signup-submit').onclick=()=>{
+    let name=document.getElementById('signup-name').value.trim();
+    let email=document.getElementById('signup-email').value.trim();
+    let pass=document.getElementById('signup-pass').value;
+    let confirm=document.getElementById('signup-confirm').value;
+    let terms=document.getElementById('signup-terms').checked;
+    if(name.length<2) return toast("Enter full name");
+    if(pass!==confirm) return toast("Passwords do not match");
+    if(!terms) return toast("Accept terms first");
+
+    let finalEmail=email;
+    while(findUser(finalEmail)) {
+      let rand=Math.floor(Math.random()*1000);
+      finalEmail=email.replace("@","+"+rand+"@");
+    }
+
+    saveUser({name,email:finalEmail,pass});
+    toast("Account created with email: "+finalEmail);
+    switchTo('login');
+  };
+
+  // --- User Login ---
+  document.getElementById('login-submit').onclick=()=>{
+    let email=document.getElementById('login-email').value.trim();
+    let pass=document.getElementById('login-pass').value;
+    let remember=document.getElementById('login-remember').checked;
+    let user=findUser(email);
+    if(!user) return toast("User not found");
+    if(user.pass!==pass) return toast("Wrong password");
+    toast("Login successful!");
+    if(remember) localStorage.setItem("currentUser", JSON.stringify(user));
+    setTimeout(()=>window.location="dashboard-User.html",1000);
+  };
+
+  // --- Forgot ---
+  document.getElementById('forgot-submit').onclick=()=>{
+    let email=document.getElementById('forgot-email').value.trim();
+    let user=findUser(email);
+    if(!user) return toast("Email not registered");
+    toast("Reset link sent (mock)");
+  };
+
+  // --- Auto-login ---
+  let saved=localStorage.getItem("currentUser");
+  if(saved){
+    let u=JSON.parse(saved);
+    toast("Welcome back, "+(u.name||"User"));
+    setTimeout(()=>window.location="dashboard-User.html",1000);
+  }
+});
+</script>
+</body>
+</html>

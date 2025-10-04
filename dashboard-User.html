@@ -1,0 +1,434 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <script src="script.js"></script>
+  <link rel="stylesheet" href="style.css" />
+  <title>Rioce Computer</title>
+  <script type="module" src="https://unpkg.com/@google/model-viewer/dist/model-viewer.min.js"></script>
+</head>
+<body>
+    <canvas id="bg3d"></canvas>
+  <!-- Header -->
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <img src="Rioce-image.png" alt="Rioce Logo" class="logo" />
+        <div>
+          <h1>Rioce Computer</h1>
+          <p class="tag">Choosing the right future — Choosing Rioce</p>
+        </div>
+      </div>
+      <nav class="nav">
+        <a href="#courses" target="blank">All Courses</a>
+        <a href="gallery.html">Gallery</a>
+        <a href="#contact">Contact</a>
+        <a href="Profile.html">Profile</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- Hero -->
+  <section class="hero">
+    <img src="Rioce-image.png" alt="" class="hero-bg" />
+    <div class="container hero-inner">
+      <div class="hero-text">
+        <h2>Welcome to Rioce Computer</h2>
+        <p>Practical computer training — programming, web, design, networking & more.</p>
+        <img src="Header-image.png" alt="Rioce Computer" class="right-img">
+        <div class="hero-cta">
+          <a href="admission.html" target="blank" class="btn primary">Apply Admission</a>
+          <a href="https://forms.visme.co/formsPlayer/p9nzkyyo-email-capture-form-template" target="blank" class="btn primary">Request Callback</a>
+          <a href="courses.html" target="blank" class="btn">View Courses</a>
+        </div>
+      </div>
+
+      <!-- 3D model viewer (transparent background) -->
+      <div class="hero-3d">
+        <model-viewer
+          src="assets/model.glb"
+          alt="3D object"
+          auto-rotate
+          camera-controls
+          ar
+          background-color="transparent"
+          style="width:100%; max-width:420px; height:320px;"
+        ></model-viewer>
+      </div>
+    </div>
+  </section>
+
+  <!-- About / Owner & Center Info -->
+  <section id="about" class="container section">
+    <div class="about-grid">
+      <div>
+        <h3>About Rioce Computer</h3>
+        <p>Rioce Computer is a training center focused on job-ready computer courses. Our instructors are industry-experienced and we emphasize projects and practical learning.</p>
+
+        <h4>Owner</h4>
+        <p>Name: Mr. Ram penday<br>Phone: +91+8090801449<br>Email: ramriocecomputer@gmall.com</p>
+      </div>
+
+      <aside class="center-card">
+        <img src="Rioce-image.png" alt="Center Logo" class="center-logo" />
+        <p class="center-name">Rioce Computer Training Center</p>
+        <p class="center-address">Ajgain Near HDFC Bank Station Rode, Unnao, Utter Predesh</p>
+      </aside>
+    </div>
+  </section>
+
+  <!-- Courses -->
+  <section id="courses" class="container section light">
+    <h3>Courses We Offer</h3>
+    <div class="courses-grid">
+      <div class="course-card">
+        <h4>Basic Computer</h4>
+        <div class="course-image-wrap">
+  <img src="Basic-image.webp" alt="Basic Computer" class="course-image" />
+</div>
+        <p>Fundamentals, MS Office, basic computer skills.</p>
+        <p class="small">Duration: 2 months</p>
+        <div class="course-bottom">
+          <div class="price">₹2,000</div>
+          <button class="btn apply-btn" data-course="Basic Computer" data-fee="2000">Apply</button>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <h4>Graphic Design</h4>
+        <div class="course-image-wrap">
+  <img src="Graphic Design.jpg" alt="Basic Computer" class="course-image" />
+</div>
+        <p>Photoshop, Illustrator, portfolio projects.</p>
+        <p class="small">Duration: 3 months</p>
+        <div class="course-bottom">
+          <div class="price">₹5,000</div>
+          <button class="btn apply-btn" data-course="Graphic Design" data-fee="5000">Apply</button>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <h4>Typing skills</h4>
+        <div class="course-image-wrap">
+  <img src="Typing skills.jpg" alt="Basic Computer" class="course-image" />
+</div>
+        <p>Improve your typing speed and accuracy with interactive typing lessons and practices.</p>
+        <p class="small">Duration: 3 months</p>
+        <div class="course-bottom">
+          <div class="price">₹5,000</div>
+          <button class="btn apply-btn" data-course="Graphic Design" data-fee="5000">Apply</button>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <h4>DDTP</h4>
+        <div class="course-image-wrap">
+  <img src="DDTP.jpg" alt="Basic Computer" class="course-image" />
+</div>
+        <p>Photoshop, Coral Draw, Page Maker</p>
+        <p class="small">Duration: 3 months</p>
+        <div class="course-bottom">
+          <div class="price">₹5,000</div>
+          <button class="btn apply-btn" data-course="Graphic Design" data-fee="5000">Apply</button>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <h4>DFA</h4>
+        <div class="course-image-wrap">
+  <img src="DFA.png" alt="Basic Computer" class="course-image" />
+</div>
+        <p>Learn about financial accounting principles, including Tally ERP 9 with GST, and manage accounts effectively.</p>
+        <p class="small">Duration: 6 months</p>
+        <div class="course-bottom">
+          <div class="price">₹5,000</div>
+          <button class="btn apply-btn" data-course="Graphic Design" data-fee="5000">Apply</button>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <h4>DCA</h4>
+        <div class="course-image-wrap">
+  <img src="DCA.webp" alt="Basic Computer" class="course-image" />
+</div>
+        <p>Master essential computer skills, including MS Office, Internet, and computer fundamentals.</p>
+        <p class="small">Duration: 9 months</p>
+        <div class="course-bottom">
+          <div class="price">₹5,000</div>
+          <button class="btn apply-btn" data-course="Graphic Design" data-fee="5000">Apply</button>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <h4>CCC</h4>
+        <div class="course-image-wrap">
+  <img src="CCC.jpg" alt="Basic Computer" class="course-image" />
+</div>
+        <p>Gain proficiency in various computer applications, including Microsoft Office, LibreOffice, and more</p>
+        <p class="small">Duration: 3 months</p>
+        <div class="course-bottom">
+          <div class="price">₹5,000</div>
+          <button class="btn apply-btn" data-course="Graphic Design" data-fee="5000">Apply</button>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <h4>Web Development</h4>
+        <div class="course-image-wrap">
+  <img src="Web Development.jpeg" alt="Basic Computer" class="course-image" />
+</div>
+        <p>HTML, CSS, JavaScript, React basics and projects.</p>
+        <p class="small">Duration: 4 months</p>
+        <div class="course-bottom">
+          <div class="price">₹8,000</div>
+          <button class="btn apply-btn" data-course="Web Development" data-fee="8000">Apply</button>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <h4>ADFA</h4>
+        <div class="course-image-wrap">
+  <img src="ADFA.jpg" alt="Basic Computer" class="course-image" />
+</div>
+        <p>Enhance Financial Accounting with the ADFA course, focusing on Financial Accounting Fundamentals,Advanced Tally with GST,Income Tax and Payroll Management</p>
+        <p class="small">Duration: 1 Year</p>
+        <div class="course-bottom">
+          <div class="price">₹8,000</div>
+          <button class="btn apply-btn" data-course="Web Development" data-fee="8000">Apply</button>
+        </div>
+      </div>
+
+      <div class="course-card">
+        <h4>O.Level</h4>
+        <div class="course-image-wrap">
+  <img src="O.Level.jpg" alt="Basic Computer" class="course-image" />
+</div>
+        <p>Enhance your technical skills with the O Level course, focusing on web designing, networking, and programming.</p>
+        <p class="small">Duration: 1 Year</p>
+        <div class="course-bottom">
+          <div class="price">₹8,000</div>
+          <button class="btn apply-btn" data-course="Web Development" data-fee="8000">Apply</button>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Gallery -->
+  <section id="" class="container section">
+    <h3>Gallery</h3>
+    <div class="gallery-grid">
+      <!-- your images -->
+      <img src="image1.png" alt="gallery" />
+      <img src="image2.jpg" alt="gallery" />
+      <img src="image3.jpg" alt="gallery" />
+      <img src="image4.jpg" alt="gallery" />
+      <img src="image5.jpg" alt="gallery" />
+    </div>
+  </section>
+
+  <!-- Get Teach / Fee Submit -->
+<section id="admission" class="container section light">
+   <h2>Get Teach</h2>
+  <div class="form-card">
+    <form id="admissionForm">
+      <div class="form-row">
+        <label for="studentName">Full Name</label>
+        <input id="studentName" name="name" type="text" required />
+      </div>
+
+      <div class="form-row">
+        <label for="studentEmail">Email</label>
+        <input id="studentEmail" name="email" type="email" required />
+      </div>
+
+      <div class="form-row">
+        <label for="studentPhone">Phone Number</label>
+        <input id="studentPhone" name="phone" type="tel" required placeholder="+91 9876540000" />
+      </div>
+
+      <div class="form-row">
+        <label for="studentCourse">Course</label>
+        <input id="studentCourse" name="course" type="text" required />
+      </div>
+
+      <div class="form-row">
+        <label for="studentSource">Select Source</label>
+        <select id="studentSource" name="source" required>
+          <option value="" disabled selected>-- Select Source --</option>
+          <option value="ADFA">ADFA</option>
+          <option value="DFA">DFA</option>
+          <option value="CCC">CCC</option>
+          <option value="DCA">DCA</option>
+          <option value="TALLY">Tally</option>
+          <option value="CCC">Typing course</option>
+          <option value="O.Level">O.Level</option>
+          <option value="Advertisement">Advertisement</option>
+        </select>
+      </div>
+
+      <div class="form-row">
+        <label for="studentMessage">Message</label>
+        <textarea id="studentMessage" name="message" placeholder="Write your message..."></textarea>
+      </div>
+
+      <div class="form-actions">
+        <button type="submit" class="btn primary">Submit Admission</button>
+        <button type="button" id="resetForm" class="btn">Reset</button>
+      </div>
+    </form>
+  </div>
+</section>
+        <div id="formMessage" class="form-message" aria-live="polite"></div>
+      </form>
+  </section>
+
+<!-- Footer section -->
+<section id="contact" class="site-footer">
+    <div class="container">
+      <div class="footer-inner">
+        <div class="footer-section">
+          <h4>About Rioce</h4>
+          <p>Rioce Computer Training Center is dedicated to providing quality computer education and training in Unnao, Uttar Pradesh.</p>
+          <div class="social-links">
+            <a href="#"><i class="fab fa-facebook-f"></i></a>
+            <a href="#"><i class="fab fa-twitter"></i></a>
+            <a href="#"><i class="fab fa-instagram"></i></a>
+            <a href="#"><i class="fab fa-youtube"></i></a>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Contact Info</h4>
+          <div class="contact-info">
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <p>Ajgain Near HDFC Bank Station Road, Unnao, Uttar Pradesh</p>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <p>+91 8090801449</p>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <p>ramriocecomputer@gmail.com</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="footer-section">
+          <h4>Quick Links</h4>
+          <div class="quick-links">
+            <p><a href="#home">Home</a></p>
+            <p><a href="#about">About Us</a></p>
+            <p><a href="#courses">Courses</a></p>
+            <p><a href="#gallery">Gallery</a></p>
+            <p><a href="#admission">Admission</a></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="map-container">
+        <img src="Map.png" alt="Location Map" />
+      </div>
+
+      <div class="copyright">
+        © <span id="year"></span>Rioce Computer Training Center. All rights reserved. Developed by <a href="https://my-project512.github.io/CornFlax/">CornFlax</a>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+    <script>
+        const scene = new THREE.Scene();
+        const camera = new THREE.PerspectiveCamera(75, window.innerWidth/window.innerHeight, 0.1, 1000);
+        const renderer = new THREE.WebGLRenderer({canvas: document.getElementById("bg3d"), alpha: true});
+        renderer.setSize(window.innerWidth, window.innerHeight);
+
+        const geometry = new THREE.TorusKnotGeometry(10, 3, 100, 16);
+        const material = new THREE.MeshStandardMaterial({color: 0x00ffff, wireframe: true});
+        const torusKnot = new THREE.Mesh(geometry, material);
+        scene.add(torusKnot);
+
+        const light = new THREE.PointLight(0xffffff, 1);
+        light.position.set(25, 25, 25);
+        scene.add(light);
+
+        camera.position.z = 50;
+
+        function animate() {
+            requestAnimationFrame(animate);
+            torusKnot.rotation.x += 0.01;
+            torusKnot.rotation.y += 0.01;
+            renderer.render(scene, camera);
+        }
+        animate();
+
+    // Basic interactivity: prefill course from Apply buttons, local submission storage, simple message
+document.addEventListener('DOMContentLoaded', function () {
+  // Update year in footer
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  // Apply buttons: set course & fee and scroll to form
+  document.querySelectorAll('.apply-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const course = btn.dataset.course || '';
+      const fee = btn.dataset.fee || '';
+      document.getElementById('studentCourse').value = course;
+      document.getElementById('studentFee').value = fee;
+      location.hash = '#admission';
+      // small focus
+      setTimeout(()=> document.getElementById('studentName').focus(), 300);
+    });
+  });
+
+  // Get Teach handling (frontend)
+  const form = document.getElementById('admissionForm');
+  const message = document.getElementById('formMessage');
+
+  form.addEventListener('submit', (e) => {
+    e.preventDefault();
+    const name = form.name.value.trim();
+    const email = form.email.value.trim();
+    const course = form.course.value.trim();
+    const fee = form.fee.value.trim();
+
+    if (!name || !email || !course || !fee) {
+      message.style.color = 'crimson';
+      message.textContent = 'Please fill all required fields.';
+      return;
+    }
+  
+    // Save submission to localStorage (as simple storage demo)
+    const submissions = JSON.parse(localStorage.getItem('rioce_submissions') || '[]');
+    submissions.push({ name, email, course, fee, date: new Date().toISOString() });
+    localStorage.setItem('rioce_submissions', JSON.stringify(submissions));
+
+    message.style.color = 'green';
+    message.textContent = 'Thank you! Your application has been received. We will contact you soon.';
+
+    // Reset form after submit (but keep course prefilled)
+    setTimeout(() => {
+      form.reset();
+      document.getElementById('studentCourse').value = course;
+      document.getElementById('studentFee').value = fee;
+    }, 800);
+  });
+
+  // Reset button
+  document.getElementById('resetForm').addEventListener('click', () => {
+    form.reset();
+    message.textContent = '';
+  });
+});
+document.addEventListener("contextmenu", function(event) {
+    event.preventDefault();
+  }); 
+ // Reset button
+  document.getElementById("resetForm").addEventListener("click", function () {
+    document.getElementById("admissionForm").reset();
+  });
+</script>

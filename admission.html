@@ -1,0 +1,140 @@
+<html>
+<head>
+	<meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+	 <script src="script.js"></script>
+	<title>RIOCE COMPUTER STUDES ADMITION APPLICATION FORM</title>
+	<style>
+		.Registration-Fee{text-decoration: none; border: 1px solid rgb(4, 4, 4); border-radius: 2px; color: black; font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; background-color: white;}
+		.logo{position: absolute; width:56px; height:56px; object-fit:cover;}
+		.bg-img {position: fixed; inset: 0; width: 100%; height: 100%; object-fit: cover;z-index: -1; pointer-events: none; user-select: none; opacity: 20%;}
+		h3{font-size: 20px auto; color: rgb(48, 138, 222); font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif; font-weight: bold;}
+	</style>
+</head>
+<body>
+	<img src="Rioce-image.png" class="bg-img" alt="">
+	<img src="Rioce-image.png" alt="Rioce Logo" class="logo" />
+	<center><h3>RIOCE COMPUTER STUIES</h3></center>
+	<center><h3>REGISTRATION APPLICATION FORM</h3></center>
+	
+	<!-- ✅ form ko ek unique id diya -->
+	<form id="admissionForm">
+		<table align="center" width="80%" border="1" cellpadding="5px" cellspacing="0">
+			<tr bgcolor="#0090b8">
+				<td colspan="3"><font color="white"><b>1. Registration Form</b></font></td>
+			</tr>
+			<tr>
+				<td>1.0</td>
+				<td>Have you got online reference number for enrolment with<br/> NIELIT/Accreditation/Extension Center </td>
+				<td><label>No</label><input type="radio" name="enroll"/><label>Yes</label><input type="radio" name="enroll"/></td>
+			</tr>
+			<tr>
+				<td>1.1</td>
+				<td>Registration sought for</td>
+				<td>
+					<select name="course">
+						<option>O LEVEL</option>
+						<option>DFA</option>
+						<option>DCA</option>
+						<option>CCC</option>
+						<option>Advance Excel</option>
+						<option>Typing Learning</option>
+						<option>Other</option>
+					</select>
+				</td>
+			</tr>
+			<tr>
+				<td>2.1</td>
+				<td>Applicant's full name </td>
+				<td>
+					<select name="title">
+						<option>--Select --</option>
+						<option>Mr.</option>
+						<option>Ms.</option>
+						<option>Others</option>
+					</select>
+					<input type="text" placeholder="Enter Your Name" name="fullname" size="20"/>
+				</td>
+			</tr>
+			<tr>
+				<td>2.2.1</td>
+				<td>Father's Name </td>
+				<td>
+					<select disabled>
+						<option>Mr.</option>
+					</select>
+					<input type="text" placeholder="Father's Name" name="father_name" size="20"/>
+				</td>
+			</tr>
+			<tr>
+				<td>2.2.2</td>
+				<td>Mother's Name </td>
+				<td>
+					<select disabled>
+						<option>Mrs.</option>
+					</select>
+					<input type="text" placeholder="Mother's Name" name="mother_name" size="20"/>
+				</td>
+			</tr>
+			<tr>
+				<td>3.1</td>
+				<td>Mobile Number</td>
+				<td><input type="tel" name="mobile" maxlength="10" placeholder="Enter Mobile Number"/></td>
+			</tr>
+			<tr>
+				<td>3.2</td>
+				<td>Email ID</td>
+				<td><input type="email" name="email" placeholder="Enter Your Email"/></td>
+			</tr>
+			<tr>
+				<td>3.3</td>
+				<td>Address Line 1</td>
+				<td><input type="text" name="address" placeholder="Enter Your First Address"/></td>
+			</tr>
+			<tr>
+				<td>5.1</td>
+				<td>Aadhar Card Number</td>
+				<td><input type="text" name="aadhar" maxlength="12" placeholder="Enter Your Aadhar Number"/></td>
+			</tr>
+			<tr>
+				<td>5.2</td>
+				<td>Upload Photo</td>
+				<td><input type="file" name="photo"></td>
+			</tr>
+			<tr>
+				<td colspan="3" align="center">
+					<input type="submit" value="Submit"/>
+					<input type="reset" value="Reset"/>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>
+
+<script>
+// ===== Background Image Notice =====
+document.addEventListener("DOMContentLoaded", () => {
+  console.log("Background image is disabled for interaction.");
+});
+
+// ===== EmailJS Init =====
+(function(){
+   emailjs.init("SzxlHRy5_sMUejOLM"); 
+})();
+
+// ===== Form Submit EmailJS =====
+document.getElementById("admissionForm").addEventListener("submit", function(event) {
+    event.preventDefault();
+
+    emailjs.sendForm("service_9lmee27", "template_27v6qwd", this) 
+	    .then(function(response) {
+        alert("✅ Form submitted successfully! Check your email.");
+        console.log("SUCCESS!", response.status, response.text);
+    }, function(error) {
+        alert("❌ Failed to send form. Please try again.");
+        console.log("FAILED...", error);
+    });
+});
+</script>
+</html>
